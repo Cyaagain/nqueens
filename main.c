@@ -6,12 +6,8 @@
 int main(int argc, char ** argv)
 {
     int      n = 16;
-    int      middle;
     uint64_t count = 0;
-    int i = 0;
-    int conflict = 0; // position of conflict
     q_body_t *nq = NULL;
-    int       j;
 
     if (argc == 2) {
         n = atoi(argv[1]);
