@@ -10,25 +10,31 @@ int main(int argc, char ** argv)
     uint64_t count = 0;
     int i = 0;
     int conflict = 0; // position of conflict
+    q_body_t *nq = NULL;
+    int       j;
 
     if (argc == 2) {
         n = atoi(argv[1]);
     }
     if (n == 1) {
-        printf("Totle: 1\n");
+        printf("1 Queen: 1\n");
         return 0;
     }
     if (n < 4) {
-        printf("Totle: 0\n");
+        printf("%d Queens: 0\n", n);
         return 0;
     }
-    // symmetrical
-    middle = (n + 1) >> 1;
 
-    // main loop
-    while (i < middle) {
-
+    nq = q_queen_init(n);
+    if (!nq) {
+        printf("Malloc error! Exiting...\n");
+        return 1;
     }
+
+    count = q_nqueens_loop(nq);
+
+    
+    printf("%d Queens: %llu\n", n, count);
     
     return 0;
 }
